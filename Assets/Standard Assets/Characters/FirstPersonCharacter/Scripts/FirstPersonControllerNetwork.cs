@@ -3,13 +3,12 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-using FishNet.Object;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-    public class FirstPersonControllerNetwork : NetworkBehaviour
+    public class FirstPersonControllerNetwork : MonoBehaviour
     {
         public static FirstPersonControllerNetwork Instance;
         
@@ -60,24 +59,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-            if(IsOwner && IsClient){
-                m_Camera.enabled = true;
-                Destroy(Camera.current);
-                //camera.main = m_Camera;
-            }
-        }
-
 
         // Update is called once per frame
         private void Update()
         {
-            if (Instance == null && IsClient && IsOwner)
+         /*   if (Instance == null && IsClient && IsOwner)
                 Instance = this;
             if (IsClient && IsOwner)
-            {
+            {*/
 
 
 
@@ -101,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
 
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
-            }
+           // }
         }
 
 
@@ -115,7 +104,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            if(IsClient && IsOwner){
+           // if(IsClient && IsOwner){
                 float speed;
                 GetInput(out speed);
                 // always move along the camera forward as it is the direction that it being aimed at
@@ -152,7 +141,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 UpdateCameraPosition(speed);
 
                 m_MouseLook.UpdateCursorLock();
-            }
+           // }
         }
 
 

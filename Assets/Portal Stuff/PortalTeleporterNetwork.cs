@@ -41,7 +41,7 @@ public class PortalTeleporterNetwork : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			FirstPersonControllerNetwork thisPlayer = other.GetComponent<FirstPersonControllerNetwork>();
-			if(thisPlayer.IsClient && thisPlayer.IsOwner)
+			//if(thisPlayer.IsClient && thisPlayer.IsOwner)
 				playerIsOverlapping = true;
 		}
 	}
@@ -51,7 +51,7 @@ public class PortalTeleporterNetwork : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			FirstPersonControllerNetwork thisPlayer = other.GetComponent<FirstPersonControllerNetwork>();
-			if(thisPlayer.IsClient && thisPlayer.IsOwner)
+			//if(thisPlayer.IsClient && thisPlayer.IsOwner)
 				playerIsOverlapping = false;
 		}
 	}
