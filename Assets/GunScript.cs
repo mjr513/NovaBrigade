@@ -24,17 +24,10 @@ public class GunScript : MonoBehaviour
 
     public GameObject muzzleFlash;
     public TextMeshProUGUI ammunitionDisplay;
-
-    public int maxHealth;
-    private int currentHealth;
-
-    private Transform ui_healthbar;
     
     void Start()
     {
-        currentHealth = maxHealth;
-
-        RegenHealthBar();
+        
     }
 
     private void Awake()
@@ -66,8 +59,6 @@ public class GunScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
 
         if (readyToShoot && shooting && !reloading && bulletsLeft <=0) Reload();
-
-        if (Input.GetKeyDown(KeyCode.U)) TakeDamage(500);
     }
 
     private void Shoot()
@@ -126,18 +117,5 @@ public class GunScript : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
-    }
-
-    void RegenHealthBar()
-    {
-        float t_health_ratio = (float)currentHealth / (float)maxHealth;
-
-        //ui_healthbar.localScale = new Vector3(t_health_ratio, 1, 1);
-    }
-
-    public void TakeDamage (int p_damage)
-    {
-        currentHealth -= p_damage;
-        RegenHealthBar();
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,24 +25,12 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
     public float groundDrag;
 
-    private float maxHealth = 100;
-    public float timeBeforeRegenStarts = 3;
-    private float healthValueIncrement = 1;
-    private float healthTimeIncrement = 0.1f;
-    private float currentHealth;
-    private Coroutine regeneratingHealth;
-
-
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         readyToJump = true;
-
-        currentHealth = maxHealth;
     }
 
     void Update()
@@ -100,50 +87,5 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
-
-    public void ApplyDamage(float dmg)
-    {
-        currentHealth -= dmg;
-   
-
-
-        if(currentHealth <= 0 )
-            KillPlayer();
-        else if (regeneratingHealth != null)
-            StopCoroutine(regeneratingHealth);
-        
-        regeneratingHealth = StartCoroutine(RegenerateHealth());
-    }
-
-    private void KillPlayer()
-    {
-        currentHealth = 0;
-
-        if(regeneratingHealth !=null)
-            StopCoroutine(regeneratingHealth);
-
-        print("Dead");    
-    }
-
-    private IEnumerator RegenerateHealth()
-    {
-        yield return new WaitForSeconds(timeBeforeRegenStarts);
-        WaitForSeconds timeToWait = new WaitForSeconds(healthTimeIncrement);
-
-        while(currentHealth < maxHealth)
-        {
-            currentHealth += healthValueIncrement;
-
-            if(currentHealth > maxHealth)
-                currentHealth = maxHealth;
-
-
-            
-            yield return timeToWait;
-        }
-
-        regeneratingHealth = null;
-    }
-
     
 }
