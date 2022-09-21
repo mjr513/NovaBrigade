@@ -37,7 +37,37 @@ public class PickupController : MonoBehaviour
     void Update()
     {
         Vector3 distanceToPlayer = player.position - transform.position;
-        if(!equipped && distanceToPlayer.magnitude <= pickupRange && Input.GetKeyDown(KeyCode.G) && !slotfull) PickUp();
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            print("push G");
+            if(!equipped)
+            {
+                print("not equip");
+                if(distanceToPlayer.magnitude <= pickupRange)
+                {
+                    print("in range");
+                    if(!slotfull)
+                    {
+                        print("Slot is not full");
+                        PickUp();
+                    }
+                    else
+                    {
+                        print("THe Slot is full");
+                    }
+                }
+                else
+                {
+                    print("too far away");
+                    print("distance: " + distanceToPlayer.magnitude);
+                }
+            }
+            else
+            {
+                print("its equip");
+            }
+        }
+       // if(!equipped && distanceToPlayer.magnitude <= pickupRange && Input.GetKeyDown(KeyCode.G) && !slotfull) PickUp();
 
         if (equipped && Input.GetKeyDown(KeyCode.E)) Drop();
     }
