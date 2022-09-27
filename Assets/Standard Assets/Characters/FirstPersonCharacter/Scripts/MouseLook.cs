@@ -55,6 +55,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCursorLock();
         }
 
+        // A LookRotation function for loading a game save.
+        public void LookRotationLoad(Transform character, Transform camera)
+        {
+            m_CharacterTargetRot = character.localRotation;
+            m_CameraTargetRot = camera.localRotation;
+        }
+
         public void SetCursorLock(bool value)
         {
             lockCursor = value;
