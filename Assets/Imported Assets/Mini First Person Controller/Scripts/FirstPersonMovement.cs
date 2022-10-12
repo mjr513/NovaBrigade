@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FirstPersonMovement : MonoBehaviour
 {
+    public PhotonView photonView;
+
+    public GameObject myCamera;
+
+
     public float speed = 5;
 
     [Header("Running")]
@@ -21,10 +27,21 @@ public class FirstPersonMovement : MonoBehaviour
     {
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
+        photonView = GetComponent<PhotonView>();
+        if (photonView.AmOwner)
+        {
+            myCamera.SetActive(true);
+        }
     }
 
     void FixedUpdate()
     {
+        if (!photonView.AmOwner)
+        {
+            return;
+        }
+
+
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 

@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+    public PhotonView photonView;
+
     Rigidbody rigidbody;
     public float jumpStrength = 2;
     public event System.Action Jumped;
@@ -20,15 +23,22 @@ public class Jump : MonoBehaviour
     {
         // Get rigidbody.
         rigidbody = GetComponent<Rigidbody>();
+        photonView = GetComponent<PhotonView>(); 
     }
 
     void LateUpdate()
     {
+        if (!photonView.AmOwner)
+        {
+            return;
+        }
         // Jump when the Jump button is pressed and we are on the ground.
         if (Input.GetButtonDown("Jump") && (!groundCheck || groundCheck.isGrounded))
         {
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();
         }
+
+        
     }
 }

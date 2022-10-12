@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GameSetupController : MonoBehaviour
 {
+    public Transform spawnpoint;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,7 @@ public class GameSetupController : MonoBehaviour
     private void CreatePlayer()
     {
         Debug.Log("Create Player");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), spawnpoint.position, Quaternion.identity);
     }
 
     // Update is called once per frame

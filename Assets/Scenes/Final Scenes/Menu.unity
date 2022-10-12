@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobbyStart: {fileID: 2039875903}
-  RoomSize: 10
+  RoomSize: 4
 --- !u!4 &16946134
 Transform:
   m_ObjectHideFlags: 0
