@@ -77,5 +77,15 @@ public class AnimatorControllerTest : MonoBehaviour
             _animator.SetBool("IsJumping", false);
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _animator.SetBool("Crouch", true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            _animator.SetBool("Crouch", false);
+        }
+
     }
 }
