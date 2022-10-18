@@ -29,12 +29,12 @@ public class AnimatorControllerTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            _animator.SetBool("IsRolling", true);
+            _animator.SetBool("Reloading", true);
         }
 
         if (Input.GetKeyUp(KeyCode.R))
         {
-            _animator.SetBool("IsRolling", false);
+            _animator.SetBool("Reloading", false);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -76,5 +76,6 @@ public class AnimatorControllerTest : MonoBehaviour
         {
             _animator.SetBool("IsJumping", false);
         }
+
     }
 }
