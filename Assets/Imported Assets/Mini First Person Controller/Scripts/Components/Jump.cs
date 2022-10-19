@@ -9,6 +9,8 @@ public class Jump : MonoBehaviour
     public float jumpStrength = 2;
     public event System.Action Jumped;
 
+    public bool offline = false;
+
     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
     GroundCheck groundCheck;
 
@@ -28,7 +30,7 @@ public class Jump : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!photonView.AmOwner)
+        if (!photonView.AmOwner && !offline)
         {
             return;
         }

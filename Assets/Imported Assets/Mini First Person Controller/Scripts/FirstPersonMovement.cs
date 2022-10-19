@@ -8,6 +8,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     public GameObject myCamera;
 
+    public bool offline = false;
 
     public float speed = 5;
 
@@ -36,7 +37,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!photonView.AmOwner)
+        if (!photonView.AmOwner && !offline)
         {
             return;
         }
