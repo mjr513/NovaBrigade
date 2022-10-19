@@ -52,12 +52,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Menu.unity
     guid: 3f5c26c26a38bb54494e1d99953ed32b
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/ConnectToServer.unity
-    guid: 35d0000fa40a4b84699a5457fb786654
-  - enabled: 1
-    path: Assets/Scenes/Final Scenes/Lobby.unity
-    guid: 3539fc10331e920458f00c855106c093
-  - enabled: 1
     path: Assets/Scenes/Final Scenes/First Zone.unity
     guid: 49409aacc2b1925448ceafba8a46ab57
   m_configObjects: {}
